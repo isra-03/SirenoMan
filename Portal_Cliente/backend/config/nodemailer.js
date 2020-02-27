@@ -17,7 +17,7 @@ const transporter = nodemailer.createTransport({
 })
 exports.confirmAccount = async (to, endpoint) => {
   return await transporter.sendMail({
-    from:'Restauran',
+    from:'',
     to,
     subject: `Confirma tu cuenta`,
     html: correo({endpoint})
