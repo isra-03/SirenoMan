@@ -11,7 +11,7 @@ export default function Booking ({ history }) {
         if (!context.state.isLogged) return history.push('/login')
   })
   const handleChange=async(e)=>{
-    await context.handleChange(e,'allPrograms')
+    await context.handleChange(e,'formBooking')
   }
   return (
     <MyContext.Consumer>
@@ -31,11 +31,21 @@ export default function Booking ({ history }) {
 //    CLASES DE NATACIÓN INDIVIDUAL
 //  </ListItem>
 </List> */}
-    <Select onChange={(e)=>handleChange(e)} value={context.state.allPrograms}>
-  {context.state.allPrograms.map((programa,indx)=><option key={indx} value={programa._id}>{programa.tipo}</option>)
-  
+    <Select name = "programa" onChange={(e)=>handleChange(e)} value={context.state.formBooking.programa}>
+  {context.state.allPrograms.map((programa,indx)=><option key={indx} value={programa._id}>{programa.lugar}-{programa.tipo}</option>)
   }
 </Select>
+<Select name = "dia" onChange={(e)=>handleChange(e)} value={context.state.formBooking.dia}>
+    <option value="lunes">Lunes</option>
+    <option value="marte">Martes</option>
+    <option value="sabado">Sabado</option>
+    <option value="domingo">Domingo</option>
+</Select>
+<Select name = "horario" onChange={(e)=>handleChange(e)} value={context.state.formBooking.horario}>
+    <option value="09:00-10:00">09:00-10:00</option>
+    <option value="11:00-12:00">11:00-12:00</option>
+    <option value="18:00-19:00">18:00-19:00</option>
+ </Select>
 
 </>)
 

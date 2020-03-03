@@ -22,6 +22,12 @@ class MyProvider extends Component {
           capacidad:"",
           costoClase:""
         },
+        formBooking: {
+          programa:"",
+          cantidad:"",
+          horario:"",
+          dia:""
+        },
         allPrograms: null,
         allBookings: null,
         feed: false,
@@ -35,6 +41,16 @@ class MyProvider extends Component {
         //  const { data } = await SERVICE
         //  this.setState({ })
         //}
+        handleChange=(e,obj)=> {
+          const {
+            name,
+            value
+          } = e.target
+          let Obj = this.state[obj]
+          Obj[name] = value
+          this.setState({ Obj })
+        }
+        
 
       handleSignupInput = e => {
         const { name, value } = e.target
@@ -112,7 +128,7 @@ class MyProvider extends Component {
           handleSignupSubmit,
           handleLoginInput,
           handleLoginSubmit,
-          handleFile
+          handleChange
         } = this
         return (
           <MyContext.Provider
@@ -122,7 +138,7 @@ class MyProvider extends Component {
               handleSignupSubmit,
               handleLoginInput,
               handleLoginSubmit,
-              handleFile
+              handleChange
             }}
           >
             {this.props.children}
