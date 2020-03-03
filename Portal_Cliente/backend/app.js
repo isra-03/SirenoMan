@@ -52,7 +52,7 @@ const booking = require('./routes/booking');
 app.use('/', index);
 app.use('/', auth);
 app.use('/programa', program);
-app.use('/resevacion', booking);
+app.use('/reservacion', booking);
 
 // Uncomment this line for production
 // app.get('/*', (req, res) => res.sendFile(__dirname + '/public/index.html'));

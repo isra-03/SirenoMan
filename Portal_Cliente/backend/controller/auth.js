@@ -23,6 +23,6 @@ exports.loginPost=(req,res)=>{
   res.redirect("/admin")
 }
 
-exports.adminGet=(req,res)=>{
-  res.render("admin")
-}
+//exports.adminGet=(req,res)=>{
+//  res.render("admin")
+//}

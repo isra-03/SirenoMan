@@ -9,17 +9,32 @@ exports.getAllBookings=async (req,res)=>{
 }
 
 exports.addBoking=async (req,res)=>{
-
+    const {programa, numPersonas, dia, horario}=req.body
+    const {user}= req.user
+    const programaCompleto= await Program.findOne({_id:programa}).populate('idCoach')
+    const costoTotal=numPersonas*programaCompleto.costoClase
+    const {lugar,tipo}=programaCompleto
+    const data=await Booking.create({idPadre:user, programa, numPersonas, tipo, costoTotal, dia, horario, lugar})
+    console.log(data)
+    res.status(200).json({data})
 }
 
-exports.deleteBooking=async (req,res)=>{
 
+exports.deleteBooking=async (req,res)=>{
+  const { idBooking } = req.params;
+  await Booking.findByIdAndDelete(idBooking);
+  res.status(200).json({ message: "booking deleted" })
 }
 
 exports.updateBooking=async (req,res)=>{
-
+    const { idBooking } = req.params;
+    const { idPadre, programa, numPersonas, tipo, costoTotal, dia, horario, lugar } = req.body;
+    await Booking.findByIdAndUpdate(idBooking, { idPadre, programa, numPersonas, tipo, costoTotal, dia, horario, lugar });
+    res.status(200).json({ message: "boking updated" });
 }
 
 exports.getBooking=async (req,res)=>{
-
+   const { idBooking } = req.params;
+   const boking = await Booking.findById(idBooking).populate("idPadre").populate('programa')
+   res.status(200).json(boking);
 }

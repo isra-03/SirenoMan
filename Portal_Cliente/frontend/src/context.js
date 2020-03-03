@@ -1,7 +1,7 @@
  
 import React, { Component, createContext } from 'react'
 import { withRouter } from 'react-router-dom'
-import AUTH_SERVICE from './services/index'
+import AUTH_SERVICE from './services'
 
 export const MyContext = createContext()
 
@@ -16,8 +16,26 @@ class MyProvider extends Component {
           email: '',
           password: ''
         },
-        isLoggedIn: false
+        formProgram: {
+          tipo:"",
+          lugar:"",
+          capacidad:"",
+          costoClase:""
+        },
+        allPrograms: null,
+        allBookings: null,
+        feed: false,
+        isLogged: false,
+        loggedUser: null,
+        isOpen: false,
         }
+        
+
+        //async componentDidMount() {
+        //  const { data } = await SERVICE
+        //  this.setState({ })
+        //}
+
       handleSignupInput = e => {
         const { name, value } = e.target
         this.setState(prevState => ({
@@ -71,13 +89,21 @@ class MyProvider extends Component {
                 password: ''
               },
               loggedUser: data.user,
-              isLoggedIn: true
+              isLogged: true
             }))
-            this.props.history.push('/profile')
+            this.props.history.push('/booking')
           })
           .catch(() => {
             alert('Error')
           })
+      }
+     async componentDidMount() {
+       const data = await AUTH_SERVICE.feedAll()
+       this.setState({
+         feed: true,
+         allPrograms: data.programs,
+         allBookings: data.bookings,
+       })
       }
       render() {
         const {

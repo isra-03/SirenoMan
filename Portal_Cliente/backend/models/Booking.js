@@ -13,10 +13,10 @@ const bookingSchema = new Schema(
         numPersonas:Number,
         tipo: {
             type: String,
-            enum: ["clase", "rehabilitacion"]
+            enum: ["Clase", "Rehabilitacion"]
         },
         costoTotal: Number,
-        dia:Date,
+        dia:String,
         horario:String,
         lugar:{
             type:String,

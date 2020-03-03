@@ -29,7 +29,7 @@ router.get('/logout', (req, res, next) => {
   res.status(200).json({ msg: 'Logged out' })
 })
 
-router.get('/profile', isAuth, (req, res, next) => {
+router.get('/program', isAuth, (req, res, next) => {
   User.findById(req.user._id)
     .populate('User')
     .then(user => res.status(200).json({ user }))

@@ -7,8 +7,8 @@ const {
     getBooking}=require('../controller/booking')
 router.get('/',getAllBookings)
     .post('/add',addBoking)
-    .post('/update/:idBooking',updateBooking)
-    .get('/delete',deleteBooking)//ver si lleva id
+    .patch('/update/:idBooking',updateBooking)
+    .get('/delete/:idBooking',deleteBooking)//ver si lleva id
     .get('/:idBooking',getBooking)
 
 module.exports=router

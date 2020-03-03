@@ -1,7 +1,7 @@
 import React from 'react'
 import { MyContext } from '../context'
 import { NavLink } from 'react-router-dom'
-import { Flex } from '@chakra-ui/core'
+import { Flex, Text} from '@chakra-ui/core'
 
 const styles = {
     
@@ -25,28 +25,31 @@ export default function Navbar() {
           justify="flex-end"
           
         >
-          {!context.state.isLoggedIn && (
+          {!context.state.isLogged && (
             <>
               <NavLink {...styles} exact to="/">
-                Home
+              <Text as="i" color="#EDF2F7" >Home</Text>
               </NavLink>
               <NavLink {...styles} exact to="/signup">
-                Signup
+              <Text as="i" color="#EDF2F7">Signup</Text>               
               </NavLink>
               <NavLink {...styles} exact to="/login">
-                Login
+                <Text as="i" color="#EDF2F7" >Login</Text>
               </NavLink>
             </>
           )}
-          {context.state.isLoggedIn && (
+          {context.state.isLogged && (
             <>
               <NavLink {...styles} exact to="/">
                 Home
               </NavLink>
-              <NavLink {...styles} exact to="/profile">
-                Profile
+              <NavLink {...styles} exact to="/booking">
+                Booking
               </NavLink>
-              <button style={styles.style}>Logout</button>
+              <NavLink {...styles} exact to="/program">
+                Program
+              </NavLink>
+              <button style={context.handleLogout}>Logout</button>
             </>
           )}
         </Flex>
