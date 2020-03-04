@@ -8,14 +8,14 @@ exports.getAllBookings=async (req,res)=>{
     res.status(200).json({bookings})
 }
 
+
 exports.addBoking=async (req,res)=>{
-    const {programa, numPersonas, dia, horario}=req.body
-    const {user}= req.user
+    const {programa, cantidad, dia, horario}=req.body
+    const {user}= req
     const programaCompleto= await Program.findOne({_id:programa}).populate('idCoach')
-    const costoTotal=numPersonas*programaCompleto.costoClase
+    const costoTotal=cantidad*programaCompleto.costoClase
     const {lugar,tipo}=programaCompleto
-    const data=await Booking.create({idPadre:user, programa, numPersonas, tipo, costoTotal, dia, horario, lugar})
-    console.log(data)
+    const data=await Booking.create({idPadre:user, programa, numPersonas:cantidad, tipo, costoTotal, dia, horario, lugar})
     res.status(200).json({data})
 }
 

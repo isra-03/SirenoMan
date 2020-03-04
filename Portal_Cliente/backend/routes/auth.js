@@ -10,13 +10,14 @@ router.post('/signup', async (req, res, next) => {
   for (let i = 0; i < 20; i++) {
     token += characters[Math.floor(Math.random() * characters.length )];
   }
-   await User.register({name,email,token}, password)
+   await User.register({name,email,confirmationCode:token}, password)
     .then(async (user) =>{ 
-      const endpoint = `https://localhost:3001/${token}`
+           const endpoint = `https://localhost:3001/${token}`
       await confirmAccount(email,endpoint).catch(err=>console.log(err)
+
       )
-      res.status(201).json({user})})
-    .catch((err) => res.status(500).json({ err }));
+        res.status(201).json({user})})
+    .catch((err) =>  res.status(500).json({ err }));
 })
 
 router.post('/login', passport.authenticate('local'), (req, res, next) => {
@@ -29,7 +30,7 @@ router.get('/logout', (req, res, next) => {
   res.status(200).json({ msg: 'Logged out' })
 })
 
-router.get('/program', isAuth, (req, res, next) => {
+router.get('/profail', isAuth, (req, res, next) => {
   User.findById(req.user._id)
     .populate('User')
     .then(user => res.status(200).json({ user }))

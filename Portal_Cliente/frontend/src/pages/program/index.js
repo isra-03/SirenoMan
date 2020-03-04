@@ -10,10 +10,8 @@ class Program extends Component {
           {context => (
            <>
            <Box maxW="sm" borderWidth="1px" rounded="lg" overflow="hidden">
-           <Avatar size="xl" name="S M" src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fibricenov%2Fnadadores%2F&psig=AOvVaw1vajRRHTPhuTfyq3yRL4b3&ust=1583268543348000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJiVqpDV_OcCFQAAAAAdAAAAABAD" />
-      <Image src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.pinterest.com%2Fibricenov%2Fnadadores%2F&psig=AOvVaw1vajRRHTPhuTfyq3yRL4b3&ust=1583268543348000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCJiVqpDV_OcCFQAAAAAdAAAAABAD" alt='Coach' />
-
-      <Box p="6">
+           <Avatar size="xl" name="S M" src="https://static.vecteezy.com/system/resources/previews/000/208/248/non_2x/male-lifeguard-vector.jpg" />
+            <Box p="6">
          <Box>
           <Box as="span" color="gray.600" fontSize="sm">
             / Coach Alan Martinez.

@@ -1,5 +1,6 @@
 import axios from 'axios'
 
+
 const baseURL = 'http://localhost:3000'
 
 const MY_SERVICE = axios.create({
@@ -23,6 +24,16 @@ feedAll: async()=>{
  //console.log(programs, bookings);
  return {programs:programs.data.programs,bookings:bookings.data.bookings}
 },
+createBooking: async (form) => {
+  const booking = await MY_SERVICE.post ('/reservacion/add', form)
+  console.log("regresa a services")
+  console.log(booking)
+  return {booking:booking}
+},
+traeBookings:async (id)=>{
+  const bookings= await MY_SERVICE.post(`/reservacion/reservaciones/${id}`)
+  return {bookings:bookings}
+}
 }
 
 export default AUTH_SERVICE

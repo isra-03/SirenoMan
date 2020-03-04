@@ -34,6 +34,7 @@ class MyProvider extends Component {
         isLogged: false,
         loggedUser: null,
         isOpen: false,
+        userBookings:null
         }
         
 
@@ -73,6 +74,14 @@ class MyProvider extends Component {
           }
         }))
       }
+      handleLogout = async () => {
+        await AUTH_SERVICE.logOut()
+        this.props.history.push('/')
+        this.setState({
+          loggedUser: null,
+          isLogged: false
+        })
+      }
       handleSignupSubmit = e => {
         e.preventDefault()
         const { name, email, password } = this.state.formSignup
@@ -86,18 +95,20 @@ class MyProvider extends Component {
                 password: ''
               }
             }))
-            alert(':)')
+            alert('Cuenta creada')
             this.props.history.push('/login')
           })
           .catch(() => {
-            alert('Error')
+            alert('No se logró crear la cuenta')
           })
       }
       handleLoginSubmit = e => {
         e.preventDefault()
         const { email, password } = this.state.formLogin
         AUTH_SERVICE.login({ email, password })
-          .then(({ data }) => {
+          .then(async ({ data }) => { 
+            console.log("context",data.user._id)
+            const {bookings}= await AUTH_SERVICE.traeBookings(data.user._id)
             this.setState(prevState => ({
               ...prevState,
               formLogin: {
@@ -105,14 +116,36 @@ class MyProvider extends Component {
                 password: ''
               },
               loggedUser: data.user,
-              isLogged: true
+              isLogged: true,
+              userBookings:bookings.data.bookings,
+              feed:true
             }))
+            console.log(this.state.userBookings)
             this.props.history.push('/booking')
           })
           .catch(() => {
             alert('Error')
           })
       }
+
+      createBooking = async (e) => {
+        e.preventDefault()
+        const form= this.state.formBooking
+        //alert(form)
+        console.log(form);
+        
+        return await AUTH_SERVICE.createBooking(form)
+          .then((data ) => { 
+            console.log("regresa a context")
+            console.log(data);
+            
+            //this.props.history.push('/booking')
+          })
+          .catch(() => {
+            alert('Error')
+          })
+      }
+
      async componentDidMount() {
        const data = await AUTH_SERVICE.feedAll()
        this.setState({
@@ -128,7 +161,8 @@ class MyProvider extends Component {
           handleSignupSubmit,
           handleLoginInput,
           handleLoginSubmit,
-          handleChange
+          handleChange,
+          createBooking
         } = this
         return (
           <MyContext.Provider
@@ -138,7 +172,8 @@ class MyProvider extends Component {
               handleSignupSubmit,
               handleLoginInput,
               handleLoginSubmit,
-              handleChange
+              handleChange,
+              createBooking
             }}
           >
             {this.props.children}
