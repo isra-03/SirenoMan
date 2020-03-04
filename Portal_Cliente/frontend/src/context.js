@@ -107,7 +107,7 @@ class MyProvider extends Component {
         const { email, password } = this.state.formLogin
         AUTH_SERVICE.login({ email, password })
           .then(async ({ data }) => { 
-            console.log("context",data.user._id)
+           
             const {bookings}= await AUTH_SERVICE.traeBookings(data.user._id)
             this.setState(prevState => ({
               ...prevState,
@@ -120,7 +120,6 @@ class MyProvider extends Component {
               userBookings:bookings.data.bookings,
               feed:true
             }))
-            console.log(this.state.userBookings)
             this.props.history.push('/booking')
           })
           .catch(() => {
@@ -132,12 +131,10 @@ class MyProvider extends Component {
         e.preventDefault()
         const form= this.state.formBooking
         //alert(form)
-        console.log(form);
-        
+         
         return await AUTH_SERVICE.createBooking(form)
           .then((data ) => { 
-            console.log("regresa a context")
-            console.log(data);
+            
             
             //this.props.history.push('/booking')
           })
