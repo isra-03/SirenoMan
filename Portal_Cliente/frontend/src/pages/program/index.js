@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
 import { MyContext } from '../../context'
-import {ListItem, ListIcon,List, Box, Image, Text, Link, StarIcon, Avatar  } from '@chakra-ui/core'
+import {ListItem, ListIcon,List, Box, Avatar  } from '@chakra-ui/core'
 import { MdSettings } from "react-icons/md"
 
 class Program extends Component {
+    componentDidMount(){
+      const {loggedUser,isLogged}=this.context.state
+if(!loggedUser && !isLogged) {this.props.history.push('/login')}
+    }
     render() {
       return (
         <MyContext.Consumer>

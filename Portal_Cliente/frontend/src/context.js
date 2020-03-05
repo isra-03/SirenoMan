@@ -28,6 +28,7 @@ class MyProvider extends Component {
           horario:"",
           dia:""
         },
+        isCoach:false,
         allPrograms: null,
         allBookings: null,
         feed: false,
@@ -79,7 +80,8 @@ class MyProvider extends Component {
         this.props.history.push('/')
         this.setState({
           loggedUser: null,
-          isLogged: false
+          isLogged: false,
+          isCoach:false
         })
       }
       handleSignupSubmit = e => {
@@ -106,8 +108,7 @@ class MyProvider extends Component {
         e.preventDefault()
         const { email, password } = this.state.formLogin
         AUTH_SERVICE.login({ email, password })
-          .then(async ({ data }) => { 
-           
+          .then(async ({data} ) => { 
             const {bookings}= await AUTH_SERVICE.traeBookings(data.user._id)
             this.setState(prevState => ({
               ...prevState,
@@ -120,6 +121,7 @@ class MyProvider extends Component {
               userBookings:bookings.data.bookings,
               feed:true
             }))
+            if (data.user.rol==="Coach") {this.setState({isCoach:true})}
             this.props.history.push('/booking')
           })
           .catch(() => {
@@ -133,13 +135,20 @@ class MyProvider extends Component {
         //alert(form)
          
         return await AUTH_SERVICE.createBooking(form)
-          .then((data ) => { 
-            
+          .then ( async ({booking} ) => { 
+            alert('creado')
+            const {bookings} = await AUTH_SERVICE.traeBookings(booking.data.data.idPadre._id)
+           
+            console.log(this.state.userBookings) 
+            this.setState({
+              userBookings: bookings.data.bookings
+            })
+            console.log(this.state.userBookings)
             
             //this.props.history.push('/booking')
           })
-          .catch(() => {
-            alert('Error')
+          .catch((err) => {
+            alert(err)
           })
       }
 
@@ -159,7 +168,8 @@ class MyProvider extends Component {
           handleLoginInput,
           handleLoginSubmit,
           handleChange,
-          createBooking
+          createBooking,
+          handleLogout
         } = this
         return (
           <MyContext.Provider
@@ -170,7 +180,8 @@ class MyProvider extends Component {
               handleLoginInput,
               handleLoginSubmit,
               handleChange,
-              createBooking
+              createBooking,
+              handleLogout
             }}
           >
             {this.props.children}

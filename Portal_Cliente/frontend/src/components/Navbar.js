@@ -38,7 +38,21 @@ export default function Navbar() {
               </NavLink>
             </>
           )}
-          {context.state.isLogged && (
+          {context.state.isLogged && context.state.isCoach && (
+            <>
+              <NavLink {...styles} exact to="/">
+                Home
+              </NavLink>
+              <NavLink {...styles} exact to="/booking">
+                Booking
+              </NavLink>
+              <NavLink {...styles} exact to="/perfil">
+                Perfil
+              </NavLink>
+              <button onClick={context.handleLogout}>Logout</button>
+            </>
+          )}
+          {context.state.isLogged && !context.state.isCoach && (
             <>
               <NavLink {...styles} exact to="/">
                 Home
@@ -49,7 +63,7 @@ export default function Navbar() {
               <NavLink {...styles} exact to="/program">
                 Program
               </NavLink>
-              <button style={context.handleLogout}>Logout</button>
+              <button onClick={context.handleLogout}>Logout</button>
             </>
           )}
         </Flex>

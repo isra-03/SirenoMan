@@ -9,6 +9,7 @@ const {
     deleteBooking,
     updateBooking,reservaciones,
     getBooking}=require('../controller/booking')
+    
 router.get('/',getAllBookings)
     .post('/add',addBoking)
     .post('/reservaciones/:id',async (req,res)=>{

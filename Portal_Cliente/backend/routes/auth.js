@@ -12,7 +12,7 @@ router.post('/signup', async (req, res, next) => {
   }
    await User.register({name,email,confirmationCode:token}, password)
     .then(async (user) =>{ 
-           const endpoint = `https://localhost:3001/${token}`
+           const endpoint = `https://sirenoman.netlify.com/${token}`
       await confirmAccount(email,endpoint).catch(err=>console.log(err)
 
       )

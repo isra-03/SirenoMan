@@ -1,8 +1,8 @@
 
-import React, { useEffect, useContext, useReducer } from 'react'
+import React, { useEffect, useContext} from 'react'
 import { MyContext } from '../../context'
-import { Select, ListItem, ListIcon,Heading, Box,Stack, Image, Text,Link, StarIcon, Avatar, Divider, Flex, Badge, Button } from "@chakra-ui/core";
-import { MdSettings } from "react-icons/md"
+import { Select, Heading, Box,Stack, Text, Avatar, Divider, Flex, Badge, Button } from "@chakra-ui/core";
+
 
 export default function Booking ({ history }) {
     const context = useContext(MyContext)
@@ -23,19 +23,9 @@ export default function Booking ({ history }) {
         const { isLogged, loggedUser } = context.state
         if (isLogged)
           return ( 
-            <> 
+            <Flex direction="column" alignItems="center"> 
             
-{ /*         <List spacing={context.state.allPrograms}>
-//  <ListItem>
-//    <ListIcon icon="check-circle" color="green.500" />
-//    Clases de natación individual
-//  </ListItem>
-//  
-//  <ListItem>
-//    <ListIcon icon={MdSettings} color="green.500" />
-//    CLASES DE NATACIÓN INDIVIDUAL
-//  </ListItem>
-</List> */}
+
 <Flex maxW="sm" borderWidth="5px" rounded="lg" overflow="hidden">
   <Avatar src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQ6puEnP4id1wIGQjwHe_ZVF2JZxZ5pZ7USN2rYGxP4gDTDj2x6" />
   <Box ml="3">
@@ -49,7 +39,8 @@ export default function Booking ({ history }) {
 </Flex>
  
 <br></br>
-<Box as="form" onSubmit={submitBooking} w="50vw" align="center" justify="center">
+<Box as="form" onSubmit={submitBooking} display="flex" w="50vw" align="center" justify="center">
+   <Flex direction="column" alignItems="center">
     <Select  name = "programa" onChange={(e)=>handleChange(e)} value={context.state.formBooking.programa}>
     <option >Selecciona un programa</option>
 
@@ -83,26 +74,24 @@ export default function Booking ({ history }) {
     <option value={5}>5</option>
  </Select>
  <Divider />
- <Button type="submit" width="200px" alignSelf="center" variantColor="blue">Agregar Reservación </Button>
+
+ <Button type="submit" width="200px" marginTop="15px" alignSelf="center" variantColor="blue">Agregar Reservación </Button>
+ </Flex>
 </Box>
-
-<Box p={5} shadow="md" borderWidth="1px">
-
-<Stack isInline spacing={8} align="center">
+<br></br>
+<Stack isInline spacing={8} align="center" display="flex" justifyContent="space-around" wrap="wrap" direction="row">
 {context.state.userBookings.map((el,indx)=>
-  (<Box key={indx} p={5} shadow="md" borderWidth="1px" flex="1" rounded="md">
+  (<Box key={indx} p={2} shadow="md" borderWidth="3px" flex="1" rounded="md" >
       <Heading fontSize="xl">{el.programa.tipo} {el.programa.lugar}</Heading>
       <Text mt={4}>{el.dia} {el.horario}</Text>
-      <Text>${el.costoTotal}</Text>
+      <Text>Costo total ${el.costoTotal}</Text>
       <Text>{el.numPersonas} persona(s)</Text>
     </Box>))}
     </Stack>
 
-    </Box>
 
 
-
-</>)
+</Flex>)
 
         else return <>Loading...</>
       }}

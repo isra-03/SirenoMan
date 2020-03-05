@@ -6,6 +6,7 @@ import Signup from './pages/signup'
 import Login from './pages/login'
 import Booking from './pages/booking'
 import Program from './pages/program'
+import PerfilCoach from './pages/perfilCoach'
 
 //const Profile = () => <h1>Profile</h1>;
 //const Signup = () => <h1>Signup</h1>;
@@ -21,6 +22,7 @@ const Router = () => (
       <Route exact path="/login" component={Login} />
       <Route exact path="/booking" component={Booking} />
       <Route exact path="/program" component={Program} />
+      <Route exact path="/perfil" component={PerfilCoach} />
     </Switch>
   </>
 );

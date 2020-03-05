@@ -15,25 +15,31 @@ const AUTH_SERVICE = {
   login: async data => {
     return await MY_SERVICE.post('/login', data)
   },
+  logOut:async()=>{
+    return await MY_SERVICE.get('/logout')
+  },
 //  uploadPhoto: async photo => {
 //    return await MY_SERVICE.post('/upload', photo)
 //  }
 feedAll: async()=>{
-  const programs = await MY_SERVICE.get('/programa')  //users
-  const bookings = await MY_SERVICE.get('/reservacion')   //clients
- //console.log(programs, bookings);
- return {programs:programs.data.programs,bookings:bookings.data.bookings}
+  const programs = await MY_SERVICE.get('/programa') 
+  const bookings = await MY_SERVICE.get('/reservacion')   
+  return {programs:programs.data.programs,bookings:bookings.data.bookings}
 },
 createBooking: async (form) => {
   const booking = await MY_SERVICE.post ('/reservacion/add', form)
-  console.log("regresa a services")
-  console.log(booking)
-  return {booking:booking}
+  return {booking}
 },
 traeBookings:async (id)=>{
   const bookings= await MY_SERVICE.post(`/reservacion/reservaciones/${id}`)
   return {bookings:bookings}
-}
+},
+feedBooking: async()=>{
+  const bookings = await MY_SERVICE.get('/reservacion')  
+ 
+ return {bookings:bookings.data.bookings}
+},
+
 }
 
 export default AUTH_SERVICE
