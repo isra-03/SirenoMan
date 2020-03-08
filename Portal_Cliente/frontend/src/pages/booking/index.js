@@ -2,7 +2,7 @@
 import React, { useEffect, useContext} from 'react'
 import { MyContext } from '../../context'
 import { Select, Heading, Box,Stack, Text, Avatar, Divider, Flex, Badge, Button } from "@chakra-ui/core";
-
+import { TiArrowSortedDown } from "react-icons/ti"
 
 export default function Booking ({ history }) {
     const context = useContext(MyContext)
@@ -41,14 +41,14 @@ export default function Booking ({ history }) {
 <br></br>
 <Box as="form" onSubmit={submitBooking} display="flex" w="50vw" align="center" justify="center">
    <Flex direction="column" alignItems="center">
-    <Select  name = "programa" onChange={(e)=>handleChange(e)} value={context.state.formBooking.programa}>
+    <Select icon={TiArrowSortedDown} color="#1e4e8c" iconSize={5} variant="filled" name = "programa" onChange={(e)=>handleChange(e)} value={context.state.formBooking.programa}>
     <option >Selecciona un programa</option>
 
   {context.state.allPrograms.map((programa,indx)=><option key={indx} value={programa._id}>{programa.tipo} en {programa.lugar}</option>)
   }
 </Select>
 <Divider />
-<Select name = "dia" onChange={(e)=>handleChange(e)} value={context.state.formBooking.dia}>
+<Select icon={TiArrowSortedDown} color="#1e4e8c" iconSize={5} variant="filled" name = "dia" onChange={(e)=>handleChange(e)} value={context.state.formBooking.dia}>
 <option >Selecciona un día</option>
     <option value="lunes">Lunes</option>
     <option value="martes">Martes</option>
@@ -56,7 +56,7 @@ export default function Booking ({ history }) {
     <option value="domingo">Domingo</option>
 </Select>
 <Divider />
-<Select name = "horario" onChange={(e)=>handleChange(e)} value={context.state.formBooking.horario}>
+<Select icon={TiArrowSortedDown} color="#1e4e8c" iconSize={5} variant="filled" name = "horario" onChange={(e)=>handleChange(e)} value={context.state.formBooking.horario}>
 <option >Selecciona un horario</option>
 
     <option value="09:00-10:00">09:00-10:00</option>
@@ -64,7 +64,7 @@ export default function Booking ({ history }) {
     <option value="18:00-19:00">18:00-19:00</option>
  </Select>
  <Divider />
- <Select name = "cantidad" onChange={(e)=>handleChange(e)} value={context.state.formBooking.cantidad}>
+ <Select icon={TiArrowSortedDown} color="#1e4e8c" iconSize={5} variant="filled" name = "cantidad" onChange={(e)=>handleChange(e)} value={context.state.formBooking.cantidad}>
  <option >Selecciona la cantidad de asistentes</option>
 
     <option value={1}>1</option>

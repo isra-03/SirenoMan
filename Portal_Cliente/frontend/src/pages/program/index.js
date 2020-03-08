@@ -4,10 +4,10 @@ import {ListItem, ListIcon,List, Box, Avatar  } from '@chakra-ui/core'
 import { MdSettings } from "react-icons/md"
 
 class Program extends Component {
-    componentDidMount(){
-      const {loggedUser,isLogged}=this.context.state
-if(!loggedUser && !isLogged) {this.props.history.push('/login')}
-    }
+//    componentDidMount(){
+//      const {loggedUser,isLogged}=this.context.state
+//if(!loggedUser && !isLogged) {this.props.history.push('/login')}
+//    }
     render() {
       return (
         <MyContext.Consumer>
@@ -19,7 +19,9 @@ if(!loggedUser && !isLogged) {this.props.history.push('/login')}
          <Box>
           <Box as="span" color="gray.600" fontSize="sm">
             / Coach Alan Martinez.
-            <br></br>    Comunicación efectiva. Motivación. Planificación y organización. Enseñanza de valores. Conocimiento. Empatía. Paciencia Control y gestión.
+            <br></br>    
+            <br></br>
+            Comunicación efectiva. Motivación. Planificación y organización. Enseñanza de valores. Conocimiento. Empatía. Paciencia Control y gestión.
           </Box>
         </Box>
       </Box>
@@ -37,8 +39,13 @@ if(!loggedUser && !isLogged) {this.props.history.push('/login')}
     Flotacion y Supervivencia
   </ListItem>
   <ListItem>
+    <ListIcon icon="check-circle" color="green.500" />
+  Rehabilitación
+  </ListItem>
+
+  <ListItem>
     <ListIcon icon={MdSettings} color="green.500" />
-    CLASES DE NATACIÓN INDIVIDUAL
+    Natación en aguas abiertas
   </ListItem>
 </List>
   

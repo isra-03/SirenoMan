@@ -83,6 +83,78 @@ class Home extends Component {
     </Text>
   </Box>
 </Box>
+<br></br>
+
+<Box p={4} display={{ md: "flex" }}>
+  <Box flexShrink="0">
+    <Image
+      rounded="lg"
+      width={{ md: 40 }}
+      src="/image/inici3.jpg"
+      alt="Woman paying for a purchase"
+    />
+  </Box>
+  <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
+    <Text
+      fontWeight="bold"
+      textTransform="uppercase"
+      fontSize="sm"
+      letterSpacing="wide"
+      color="teal.600"
+    >
+    </Text>
+    <Link
+      mt={1}
+      display="block"
+      fontSize="lg"
+      lineHeight="normal"
+      fontWeight="semibold"
+      href="#"
+    >
+      Otros beneficios de la natación
+    </Link>
+    <Text mt={2} color="gray.500">
+    Nadar es uno de los pocos ejercicios físicos que benefician al cuerpo globalmente ya que potencia la fuerza, la resistencia y la flexibilidad al mismo tiempo.
+    Tiene todos los beneficios cardiovasculares de correr, a la vez que algunos de los beneficios musculares del ejercicio de pesas y otros de los efectos potenciadores de la resistencia física vinculados a las clases de danza o aerobic.
+    </Text>
+  </Box>
+</Box>
+<br></br>
+
+<Box p={4} display={{ md: "flex" }}>
+  <Box flexShrink="0">
+    <Image
+      rounded="lg"
+      width={{ md: 40 }}
+      src="/image/inici4.jpg"
+      alt="Woman paying for a purchase"
+    />
+  </Box>
+  <Box mt={{ base: 4, md: 0 }} ml={{ md: 6 }}>
+    <Text
+      fontWeight="bold"
+      textTransform="uppercase"
+      fontSize="sm"
+      letterSpacing="wide"
+      color="teal.600"
+    >
+    </Text>
+    <Link
+      mt={1}
+      display="block"
+      fontSize="lg"
+      lineHeight="normal"
+      fontWeight="semibold"
+      href="#"
+    >
+      Natación para niños
+    </Link>
+    <Text mt={2} color="gray.500">
+    La natación para niños resulta una de las mejores prácticas deportivas. No solo porque permite a los pequeños adquirir mayor destreza en los medios acuáticos sino también porque les brinda salud y bienestar.
+    Dentro del agua pueden ejecutarse diversas actividades. Por ejemplo, la fisioterapia, la práctica deportiva, la matronatación y la natación lúdica. Esta última es ideal para los niños.
+    </Text>
+  </Box>
+</Box>
 
          </>
         )}
