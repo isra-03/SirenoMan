@@ -4,10 +4,14 @@
 
 ### Proyecto para la administración de un restaurante, donde se cuenta con el rol de gerente y empleados.
 
-### Tiene como principal función la administración de usuarios, platillos y órdenes se eligió esta aplicación ya que existe una gran demanda en este sector de restaurantes, para automatizar la administración interna. 
+
+### Tiene como principal función la administración de usuarios, Es el momento de organizar tu trabajo, establecer tus objetivos, y mejorar tu productividad de manera efectiva.
+
+### Con esta aplicación podrás: organizar, mejor tu trabajo y sacarle el máximo partido a tu tiempo a partir de este momento.
+
 
 
 ## Funcionalidad
 
-### Tiene la funcionalidad de realizar alta de usuarios, con la confirmación de un correo electrónico para activar las cuentas, realiza los roles de Administrador y Usuarios, realizando la creación de nuevos platillos, borrar platillos y actualizar inventario, mostrando la actualización y las vistas del menú.
-![](https://github.com/isra-03/IronRestaurant/blob/Israel/public/images/logo.png?raw=true)
+### Ver la disponivilidad de horarios y tipos de clases que tiene el coauch asi como el seguimiento de costos y lugares para poder solicitar una clase.
+![](https://github.com/isra-03/PortalCliente/blob/master/Portal_Cliente/frontend/public/image/inici3.jpg?raw=true)
